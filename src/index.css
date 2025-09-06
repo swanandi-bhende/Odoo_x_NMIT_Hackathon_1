@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { 
+  --card-radius: 6px;
+}
+
+/* Page load animations */
+@keyframes slideFadeUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(12px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.page-enter { 
+  animation: slideFadeUp 480ms var(--delay, 0ms) both;
+  animation-timing-function: cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-root > *,
+  [data-reduced-motion] .dashboard-root > * {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* Dashboard grid system */
+.dashboard-root {
+  padding: clamp(12px, 3vw, 32px);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.panel {
+  border-radius: var(--card-radius);
+  grid-column: span 4;
+}
+
+.panel--wide {
+  grid-column: span 8;
+}
+
+.panel--full {
+  grid-column: 1 / -1;
+}
+
+.right-rail {
+  grid-column: span 4;
+}
+
+/* Card grids for internal layouts */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: clamp(12px, 2vw, 24px);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1439px) and (min-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  
+  .panel {
+    grid-column: span 4;
+  }
+  
+  .panel--wide {
+    grid-column: span 6;
+  }
+  
+  .right-rail {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  
+  .panel,
+  .panel--wide {
+    grid-column: span 6;
+  }
+  
+  .right-rail {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .panel,
+  .panel--wide,
+  .panel--full {
+    grid-column: 1 / -1;
+  }
+
+  .right-rail {
+    display: none;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+
+/* Enhanced card and component styles with softer corners */
+.card {
+  border-radius: var(--card-radius);
+}
+
+.btn {
+  border-radius: var(--card-radius);
+  transition: all 200ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.input {
+  border-radius: var(--card-radius);
+}
+
+.modal {
+  border-radius: calc(var(--card-radius) * 2);
+}
+
+/* Image responsiveness */
+.responsive-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+  border-radius: var(--card-radius);
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  border-radius: calc(var(--card-radius) * 0.75);
+}
+
+/* Enhanced hover and focus states */
+.panel:hover, .card:hover {
+  transform: translateY(-2px);
+  transition: transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.interactive:hover {
+  transform: translateY(-1px);
+  transition: transform 150ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.interactive:active {
+  transform: translateY(0);
+}
