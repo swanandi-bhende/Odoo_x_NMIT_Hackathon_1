@@ -44,28 +44,28 @@
 ## 📂 **Project Structure**
 
 ```
-client/                          # React frontend (Vite)
-├── public/                      # Static assets (if any)
-├── src/                         # Source code
-│   ├── components/              # Reusable UI components
-│   │   ├── Browsing/            # Product browsing components
-│   │   ├── Cart/                # Cart-related components
-│   │   ├── Dashboard/           # Dashboard layout components
-│   │   ├── Layout/              # Global layout (header, sidebar, etc.)
-│   │   ├── Profile/             # User profile form + map
-│   │   ├── Settings/            # Settings panel
-│   │   └── common/              # Shared UI (loader, badge, etc.)
+client/                         
+├── public/          
+├── src/                     
+│   ├── components/           
+│   │   ├── Browsing/            
+│   │   ├── Cart/               
+│   │   ├── Dashboard/          
+│   │   ├── Layout/              
+│   │   ├── Profile/             
+│   │   ├── Settings/            
+│   │   └── common/             
 │   │
-│   ├── contexts/                # React Context providers
+│   ├── contexts/               
 │   │   ├── AuthContext.jsx
 │   │   ├── CartContext.jsx
 │   │   ├── SettingsContext.jsx
 │   │   └── SidebarContext.jsx
 │   │
-│   ├── data/                    # Mock database / sample data
+│   ├── data/                   
 │   │   └── mockDB.js
 │   │
-│   ├── pages/                   # Route-based pages
+│   ├── pages/                  
 │   │   ├── Browsing.jsx
 │   │   ├── Cart.jsx
 │   │   ├── CouponsPage.jsx
@@ -79,20 +79,20 @@ client/                          # React frontend (Vite)
 │   │   ├── SupportPage.jsx
 │   │   └── WishlistPage.jsx
 │   │
-│   ├── utils/                   # Utility functions/services
+│   ├── utils/                  
 │   │   └── dataService.jsx
 │   │
-│   ├── App.jsx                  # Main app component
-│   ├── main.jsx                 # Entry point
-│   └── index.css                # Global CSS / Tailwind styles
+│   ├── App.jsx                  
+│   ├── main.jsx                
+│   └── index.css                
 │
 ├── package.json
-├── vite.config.js               # Vite configuration
-├── tailwind.config.js           # Tailwind configuration
-├── postcss.config.js            # PostCSS config
-├── .eslintrc.cjs                # ESLint rules
+├── vite.config.js              
+├── tailwind.config.js           
+├── postcss.config.js            
+├── .eslintrc.cjs               
 ├── .gitignore
-└── README_FIXES.md              # Fixes/notes (added by me)
+└── README_FIXES.md              
 
 ```
 
