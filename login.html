@@ -399,43 +399,43 @@
             }
 
             handleLogin() {
-                const formData = new FormData(document.getElementById('loginFormElement'));
-                const loginData = {
-                    email: formData.get('email').trim().toLowerCase(),
-                    password: formData.get('password')
-                };
+    const formData = new FormData(document.getElementById('loginFormElement'));
+    const loginData = {
+        email: formData.get('email').trim().toLowerCase(),
+        password: formData.get('password')
+    };
 
-                if (!loginData.email || !loginData.password) {
-                    this.showMessage('Please fill in all fields.', 'error');
-                    return;
-                }
+    if (!loginData.email || !loginData.password) {
+        this.showMessage('Please fill in all fields.', 'error');
+        return;
+    }
 
-                // Find user
-                const user = this.users.find(u => u.email === loginData.email);
-                if (!user) {
-                    this.showMessage('No account found with this email address.', 'error');
-                    return;
-                }
+    const user = this.users.find(u => u.email === loginData.email);
+    if (!user) {
+        this.showMessage('No account found with this email address.', 'error');
+        return;
+    }
 
-                if (atob(user.password) !== loginData.password) {
-                    this.showMessage('Incorrect password.', 'error');
-                    return;
-                }
+    if (atob(user.password) !== loginData.password) {
+        this.showMessage('Incorrect password.', 'error');
+        return;
+    }
 
-                // Login successful
-                this.currentUser = {
-                    name: user.name,
-                    email: user.email,
-                    registeredAt: user.registeredAt
-                };
-                localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    // Login successful
+    this.currentUser = {
+        name: user.name,
+        email: user.email,
+        registeredAt: user.registeredAt
+    };
+    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
 
-                this.showMessage('Login successful! Welcome back.', 'success');
-                
-                setTimeout(() => {
-                    this.showWelcomeScreen();
-                }, 1500);
-            }
+    this.showMessage('Login successful! Redirecting...', 'success');
+
+    setTimeout(() => {
+        window.location.href = '/index.html'; // ✅ redirect to main app
+    }, 1500);
+}
+
 
             handleLogout() {
                 this.currentUser = null;

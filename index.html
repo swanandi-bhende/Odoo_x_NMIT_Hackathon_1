@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EcoFinds - Sustainable Marketplace Dashboard</title>
-    
-    <meta name="description" content="Your personal dashboard for sustainable thrift shopping. Track your carbon savings, manage orders, and discover eco-friendly finds." />
-    <meta name="author" content="EcoFinds" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoFinds - Sustainable Marketplace Dashboard</title>
+  <meta name="description" content="Your personal dashboard for sustainable thrift shopping. Track your carbon savings, manage orders, and discover eco-friendly finds." />
+  <meta name="author" content="EcoFinds" />
 
-    <meta property="og:title" content="EcoFinds - Sustainable Marketplace Dashboard" />
-    <meta property="og:description" content="Your personal dashboard for sustainable thrift shopping. Track your carbon savings, manage orders, and discover eco-friendly finds." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ecofinds.com" />
-    <meta property="og:image" content="https://img-wrapper.vercel.app/image?url=https://placehold.co/1200x630/237A57/FFFFFF?text=EcoFinds+Dashboard" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="EcoFinds sustainable marketplace dashboard preview" />
-    
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="EcoFinds - Sustainable Marketplace Dashboard" />
-    <meta name="twitter:description" content="Your personal dashboard for sustainable thrift shopping. Track your carbon savings, manage orders, and discover eco-friendly finds." />
-    <meta name="twitter:site" content="@ecofinds" />
-    <meta name="twitter:image" content="https://img-wrapper.vercel.app/image?url=https://placehold.co/1200x630/237A57/FFFFFF?text=EcoFinds+Dashboard" />
+  <meta property="og:title" content="EcoFinds - Sustainable Marketplace Dashboard" />
+  <meta property="og:description" content="Your personal dashboard for sustainable thrift shopping. Track your carbon savings, manage orders, and discover eco-friendly finds." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ecofinds.com" />
+  <meta property="og:image" content="https://img-wrapper.vercel.app/image?url=https://placehold.co/1200x630/237A57/FFFFFF?text=EcoFinds+Dashboard" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="EcoFinds sustainable marketplace dashboard preview" />
 
-    <link rel="canonical" href="https://ecofinds.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EcoFinds - Sustainable Marketplace Dashboard" />
+  <meta name="twitter:description" content="Your personal dashboard for sustainable thrift shopping. Track your carbon savings, manage orders, and discover eco-friendly finds." />
+  <meta name="twitter:site" content="@ecofinds" />
+  <meta name="twitter:image" content="https://img-wrapper.vercel.app/image?url=https://placehold.co/1200x630/237A57/FFFFFF?text=EcoFinds+Dashboard" />
 
-     <script type="application/ld+json">
+  <link rel="canonical" href="https://ecofinds.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
@@ -40,11 +39,28 @@
         "name": "EcoFinds"
       }
     }
-    </script>
+  </script>
 
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Poppins', sans-serif;
+      background-color: #f6fdf7;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    const currentUser = localStorage.getItem('currentUser');
+    if (!currentUser) {
+      window.location.href = '/login.html';
+    }
+  </script>
+
+  <script type="module" src="/src/main.jsx"></script>
+</body>
 </html>

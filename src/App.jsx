@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import WelcomeCard from './components/WelcomeCard';
@@ -9,8 +9,18 @@ import RecommendationsGrid from './components/RecommendationsGrid';
 import ActivityFeed from './components/ActivityFeed';
 
 function App() {
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
-    // Page load animation script
+    // ✅ Authentication check
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser) {
+      window.location.href = '/login.html';
+    } else {
+      setUser(currentUser);
+    }
+
+    // ✅ Animation + DOM logic
     const initPageAnimations = () => {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReducedMotion) {
@@ -29,25 +39,29 @@ function App() {
       }
     };
 
-    // JS helper to make bottom panels stretch if right rail is empty
     const handleRightRailVisibility = () => {
       const rightRail = document.querySelector('.right-rail');
       const bottomPanels = document.querySelectorAll('[data-row="bottom"]');
 
-      if (rightRail && bottomPanels.length > 0) {
-        // Check if the right rail is hidden or has no visible content
-        const isHidden = rightRail.offsetHeight === 0 || getComputedStyle(rightRail).display === 'none';
+      if (!rightRail || bottomPanels.length === 0) return;
 
-        bottomPanels.forEach(panel => {
-          if (isHidden) {
-            panel.classList.remove('panel--wide');
-            panel.classList.add('panel--full');
-          } else {
-            panel.classList.remove('panel--full');
-            panel.classList.add('panel--wide');
-          }
-        });
+      let isHidden = true;
+
+      // ✅ Safe check before calling getComputedStyle
+      if (rightRail instanceof Element) {
+        const style = getComputedStyle(rightRail);
+        isHidden = rightRail.offsetHeight === 0 || style.display === 'none';
       }
+
+      bottomPanels.forEach(panel => {
+        if (isHidden) {
+          panel.classList.remove('panel--wide');
+          panel.classList.add('panel--full');
+        } else {
+          panel.classList.remove('panel--full');
+          panel.classList.add('panel--wide');
+        }
+      });
     };
 
     const initDOMHelpers = () => {
@@ -62,14 +76,19 @@ function App() {
       initDOMHelpers();
     }
 
+    // Cleanup
     return () => {
       window.removeEventListener('resize', handleRightRailVisibility);
     };
   }, []);
 
+  if (!user) {
+    return null; // ✅ Optionally show a loading spinner here
+  }
+
   return (
     <div className="min-h-screen bg-eco-bg">
-      <Header />
+      <Header user={user} />
       <div className="flex">
         <Sidebar />
         <main className="flex-1 dashboard-root">
@@ -77,7 +96,7 @@ function App() {
             {/* Hero Row */}
             <div className="panel--full">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <WelcomeCard />
+                <WelcomeCard user={user} />
                 <CarbonFootprintCard />
               </div>
             </div>
@@ -95,7 +114,7 @@ function App() {
               </div>
             </div>
 
-            {/* Right Rail - now inside the grid */}
+            {/* Right Rail */}
             <div className="right-rail">
               <div className="sticky top-24">
                 <ActivityFeed />
