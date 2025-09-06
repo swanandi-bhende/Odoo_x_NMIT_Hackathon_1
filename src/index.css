@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --card-radius: 6px;
+  --sidebar-width: 260px;
+  --sidebar-width-collapsed: 72px;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #FAFBF9;
+  }
+}
+
+@layer utilities {
+  .stagger-delay-1 {
+    animation-delay: 60ms;
+  }
+  .stagger-delay-2 {
+    animation-delay: 120ms;
+  }
+  .stagger-delay-3 {
+    animation-delay: 180ms;
+  }
+  .stagger-delay-4 {
+    animation-delay: 240ms;
+  }
+  .stagger-delay-5 {
+    animation-delay: 300ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Leaflet map container height */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--card-radius);
+}
