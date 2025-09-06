@@ -11,7 +11,7 @@ const Header = ({ onMenuClick }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   const handleSearchClick = () => {
-    navigate('/browse');
+    navigate('/browsing'); // ✅ fixed to match your App.jsx route
   };
 
   const handleLogout = async () => {
@@ -31,23 +31,24 @@ const Header = ({ onMenuClick }) => {
             >
               <Menu className="w-6 h-6" />
             </button>
-            
-            <div className="flex items-center space-x-6">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-eco-green rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">E</span>
-                </div>
-                <span className="font-bold text-xl text-gray-900">EcoFinds</span>
+
+            <div
+              className="flex items-center space-x-2 cursor-pointer"
+              onClick={() => navigate('/')} // ✅ brand links to Dashboard
+            >
+              <div className="w-8 h-8 bg-eco-green rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-sm">E</span>
               </div>
-              
-              <button
-                onClick={() => setShowAbout(!showAbout)}
-                className="hidden md:flex items-center space-x-1 text-gray-600 hover:text-eco-green transition-colors"
-              >
-                <Info className="w-4 h-4" />
-                <span>About EcoFinds</span>
-              </button>
+              <span className="font-bold text-xl text-gray-900">EcoFinds</span>
             </div>
+
+            <button
+              onClick={() => setShowAbout(!showAbout)}
+              className="hidden md:flex items-center space-x-1 text-gray-600 hover:text-eco-green transition-colors"
+            >
+              <Info className="w-4 h-4" />
+              <span>About EcoFinds</span>
+            </button>
           </div>
 
           {/* Center - Search */}
@@ -66,28 +67,35 @@ const Header = ({ onMenuClick }) => {
 
           {/* Right section */}
           <div className="flex items-center space-x-4">
+            {/* ✅ Sell Product */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/sell')}
               className="bg-eco-green text-white px-4 py-2 rounded-card font-medium hover:bg-emerald-700 transition-colors hidden md:flex items-center space-x-2"
             >
               <Package className="w-4 h-4" />
               <span>Sell My Product</span>
             </motion.button>
-            
+
             <div className="flex items-center space-x-2">
-              <button className="relative p-2 hover:bg-gray-100 rounded-card">
+              {/* ✅ Cart */}
+              <button
+                onClick={() => navigate('/cart')}
+                className="relative p-2 hover:bg-gray-100 rounded-card"
+              >
                 <ShoppingCart className="w-6 h-6 text-gray-600" />
                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   3
                 </span>
               </button>
-              
+
               <button className="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-card">
                 <Coins className="w-6 h-6 text-mustard" />
                 <span className="hidden md:block text-sm font-medium">1,250</span>
               </button>
-              
+
+              {/* ✅ Profile & Logout */}
               <div className="relative">
                 <button
                   onClick={() => setShowUserMenu(!showUserMenu)}
@@ -100,18 +108,21 @@ const Header = ({ onMenuClick }) => {
                     {user?.firstName || 'User'}
                   </span>
                 </button>
-                
+
                 {showUserMenu && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="absolute right-0 mt-2 w-48 bg-white rounded-card shadow-lg border border-gray-200 py-2 z-50"
                   >
-                    <button className="w-full text-left px-4 py-2 hover:bg-gray-50 flex items-center space-x-2">
+                    <button
+                      onClick={() => navigate('/profile')}
+                      className="w-full text-left px-4 py-2 hover:bg-gray-50 flex items-center space-x-2"
+                    >
                       <User className="w-4 h-4" />
                       <span>Profile</span>
                     </button>
-                    <button 
+                    <button
                       onClick={handleLogout}
                       className="w-full text-left px-4 py-2 hover:bg-gray-50 flex items-center space-x-2 text-red-600"
                     >
@@ -137,7 +148,7 @@ const Header = ({ onMenuClick }) => {
           <div className="max-w-4xl mx-auto">
             <h3 className="text-lg font-semibold mb-3">About EcoFinds</h3>
             <p className="text-green-100 mb-4">
-              EcoFinds is your sustainable thrift marketplace where every purchase saves the planet. 
+              EcoFinds is your sustainable thrift marketplace where every purchase saves the planet.
               We connect eco-conscious buyers and sellers, promoting circular economy and reducing fashion waste.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
