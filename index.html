@@ -49,16 +49,59 @@
       font-family: 'Inter', 'Poppins', sans-serif;
       background-color: #f6fdf7;
     }
+    #root {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      font-size: 1.1rem;
+      color: #237A57;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    button.logout-btn {
+      align-self: flex-start;
+      background: #237A57;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button.logout-btn:hover {
+      background-color: #1b5f43;
+    }
   </style>
 </head>
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <h1>Welcome to your EcoFinds Dashboard</h1>
+    <p>Track your carbon savings, manage your orders, and discover eco-friendly finds here.</p>
+    <button class="logout-btn" id="logoutBtn">Logout</button>
+  </div>
 
   <script>
-    const currentUser = localStorage.getItem('currentUser');
-    if (!currentUser) {
+    // Check if user is logged in
+    try {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (!currentUser) {
+        window.location.href = '/login.html';
+      }
+    } catch (e) {
+      // If JSON parsing fails, redirect to login
       window.location.href = '/login.html';
     }
+
+    // Logout button clears user data and redirects
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('currentUser');
+      window.location.href = '/login.html';
+    });
   </script>
 
   <script type="module" src="/src/main.jsx"></script>
