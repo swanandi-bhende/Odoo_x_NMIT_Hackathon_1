@@ -107,6 +107,12 @@ npm run dev
 
 ---
 
-## 🔗 **GitHub Repository:**
+##  **GitHub Repository:**
 
-`<(https://github.com/swanandi-bhende/Odoo_x_NMIT_Hackathon_1)>`
+https://github.com/swanandi-bhende/Odoo_x_NMIT_Hackathon_1
+
+---
+
+##  **PPT Link:**
+
+https://www.canva.com/design/DAGyMcyUDIs/daxX7JoS_U9k3fB5zKdNXw/edit?utm_content=DAGyMcyUDIs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
