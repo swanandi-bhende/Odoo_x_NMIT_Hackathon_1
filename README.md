@@ -35,7 +35,7 @@
 
 ## 🛠️ **Tech Stack**
 
-* **Frontend:** HTML, CSS, React, TypeScript, Tailwind CSS, Vite
+* **Frontend:** HTML, CSS, React, JavaScript, Tailwind CSS, Vite
 * **Backend:** Node.js, Express
 * **Database:** MySQL
 
@@ -65,7 +65,7 @@ README.md
 **Clone the Repository:**
 
 ```bash
-git clone <repository-url>
+git clone (https://github.com/swanandi-bhende/Odoo_x_NMIT_Hackathon_1)
 cd ecofinds
 ```
 
@@ -73,7 +73,6 @@ cd ecofinds
 
 ```bash
 npm install
-cd client && npm install
 ```
 
 **Start Development Servers:**
@@ -112,4 +111,4 @@ npm run dev
 
 ## 🔗 **GitHub Repository:**
 
-`<your-repository-link>`
+`<(https://github.com/swanandi-bhende/Odoo_x_NMIT_Hackathon_1)>`
