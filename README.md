@@ -44,18 +44,56 @@
 ## 📂 **Project Structure**
 
 ```
-client/          # React frontend
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── App.tsx
-server/          # Node.js backend
-├── routes/
-├── controllers/
-└── server.js
-package.json
-README.md
-...
+client/                          # React frontend (Vite)
+├── public/                      # Static assets (if any)
+├── src/                         # Source code
+│   ├── components/              # Reusable UI components
+│   │   ├── Browsing/            # Product browsing components
+│   │   ├── Cart/                # Cart-related components
+│   │   ├── Dashboard/           # Dashboard layout components
+│   │   ├── Layout/              # Global layout (header, sidebar, etc.)
+│   │   ├── Profile/             # User profile form + map
+│   │   ├── Settings/            # Settings panel
+│   │   └── common/              # Shared UI (loader, badge, etc.)
+│   │
+│   ├── contexts/                # React Context providers
+│   │   ├── AuthContext.jsx
+│   │   ├── CartContext.jsx
+│   │   ├── SettingsContext.jsx
+│   │   └── SidebarContext.jsx
+│   │
+│   ├── data/                    # Mock database / sample data
+│   │   └── mockDB.js
+│   │
+│   ├── pages/                   # Route-based pages
+│   │   ├── Browsing.jsx
+│   │   ├── Cart.jsx
+│   │   ├── CouponsPage.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── Login.jsx
+│   │   ├── MyListingsPage.jsx
+│   │   ├── OrdersPage.jsx
+│   │   ├── Profile.jsx
+│   │   ├── RecentBuyingsPage.jsx
+│   │   ├── Signup.jsx
+│   │   ├── SupportPage.jsx
+│   │   └── WishlistPage.jsx
+│   │
+│   ├── utils/                   # Utility functions/services
+│   │   └── dataService.jsx
+│   │
+│   ├── App.jsx                  # Main app component
+│   ├── main.jsx                 # Entry point
+│   └── index.css                # Global CSS / Tailwind styles
+│
+├── package.json
+├── vite.config.js               # Vite configuration
+├── tailwind.config.js           # Tailwind configuration
+├── postcss.config.js            # PostCSS config
+├── .eslintrc.cjs                # ESLint rules
+├── .gitignore
+└── README_FIXES.md              # Fixes/notes (added by me)
+
 ```
 
 ---
